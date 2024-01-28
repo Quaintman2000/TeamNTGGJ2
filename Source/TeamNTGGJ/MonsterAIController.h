@@ -16,15 +16,16 @@ class TEAMNTGGJ_API AMonsterAIController : public AAIController
 {
 	GENERATED_BODY()
 
+	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Behaviors, meta = (AllowPrivateAccess = "true"))
 	UAIPerceptionComponent* AIPerceptionComp;
 
 public:
 	AMonsterAIController();
 
 protected:
-	virtual void OnPossess(APawn* InPawn) override;
+	//virtual void OnPossess(APawn* InPawn) override;
 	
 public:
-	UPROPERTY(EditAnywhere, Category = Behavior)
+	UPROPERTY(EditAnywhere, Category = Behaviors)
 	UBehaviorTree* MonsterBehaviorTree; 
 };
