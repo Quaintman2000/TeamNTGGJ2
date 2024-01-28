@@ -21,10 +21,10 @@ public:
 	int CurrentCollectables;
 
 	UFUNCTION(BlueprintCallable)
-	void SetCurrentCollectables(int NewCurrentCollectables);
+	void IncrementCurrentCollectables();
 
-	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WinCondition)
-	ULevel* VictoryMap;
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnWin();
 };
 
 

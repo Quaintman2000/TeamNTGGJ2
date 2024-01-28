@@ -14,10 +14,10 @@ ATeamNTGGJGameMode::ATeamNTGGJGameMode()
 
 }
 
-void ATeamNTGGJGameMode::SetCurrentCollectables(int NewCurrentCollectables)
+void ATeamNTGGJGameMode::IncrementCurrentCollectables()
 {
-	CurrentCollectables = NewCurrentCollectables;
+	CurrentCollectables++;
 
 	if (CurrentCollectables == MaxCollectables)
-		UGameplayStatics::OpenLevel((UObject*)GGameInstance, FName(TEXT("NewMap1")));
+		OnWin();
 }
