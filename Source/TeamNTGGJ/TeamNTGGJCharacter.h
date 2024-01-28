@@ -98,6 +98,11 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category = Stats)
 	bool bIsLaughing;
 
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = UI)
+	TSubclassOf<class UUserWidget> LaughScreenClass;
+
+	UUserWidget* LaughScreen = nullptr;
+
 	UFUNCTION(BlueprintCallable)
 	void SetIsLaughing(bool NewIsLaughing);
 
