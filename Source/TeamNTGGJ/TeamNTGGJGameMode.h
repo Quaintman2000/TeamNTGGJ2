@@ -13,6 +13,18 @@ class ATeamNTGGJGameMode : public AGameModeBase
 
 public:
 	ATeamNTGGJGameMode();
+
+	UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = WinCondition)
+	int MaxCollectables;
+
+	UPROPERTY(BlueprintReadOnly)
+	int CurrentCollectables;
+
+	UFUNCTION(BlueprintCallable)
+	void IncrementCurrentCollectables();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnWin();
 };
 
 

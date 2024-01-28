@@ -12,6 +12,8 @@
 #include "Engine/LocalPlayer.h"
 #include "GameFramework/CharacterMovementComponent.h"
 
+#include "Blueprint/UserWidget.h"
+
 DEFINE_LOG_CATEGORY(LogTemplateCharacter);
 
 //////////////////////////////////////////////////////////////////////////
@@ -62,6 +64,9 @@ void ATeamNTGGJCharacter::BeginPlay()
 	bIsCrouched = false;
 
 	StandingEyeHeight = FirstPersonCameraComponent->GetRelativeTransform().GetLocation().Z;
+
+	// Create UI
+	LaughScreen = CreateWidget(Cast<APlayerController>(Controller), LaughScreenClass);
 }
 
 //////////////////////////////////////////////////////////////////////////// Input
@@ -131,6 +136,14 @@ bool ATeamNTGGJCharacter::GetHasRifle()
 void ATeamNTGGJCharacter::SetIsLaughing(bool NewIsLaughing)
 {
 	bIsLaughing = NewIsLaughing;
+
+	if (LaughScreen != nullptr)
+	{
+		if (bIsLaughing)
+			LaughScreen->AddToViewport();
+		else
+			LaughScreen->RemoveFromViewport();
+	}
 }
 
 void ATeamNTGGJCharacter::SetIsSprinting(const FInputActionValue& Value)
